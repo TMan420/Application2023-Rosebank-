@@ -25,7 +25,6 @@ namespace MyRecipe_App
 
                     case "1" or "one" or "ONE" or "One": //ONE
                         Console.Clear();
-
                         break;
                     default:
                         Console.Clear();
