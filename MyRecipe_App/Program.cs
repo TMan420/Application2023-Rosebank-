@@ -12,7 +12,6 @@ namespace MyRecipe_App
                 Console.ForegroundColor = ConsoleColor.Blue; //Font Color
                 Console.WriteLine("WELCOME");
                 Console.WriteLine();
-                Console.WriteLine();
                 Console.WriteLine("ENTER 1 - ENTER RECIPE DETAILS");
                 Console.WriteLine("ENTER 2 - DISPLAY RECIPE");
                 Console.WriteLine("ENTER 3 - SCALE RECIPE");
