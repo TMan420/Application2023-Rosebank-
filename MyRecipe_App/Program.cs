@@ -6,6 +6,7 @@ namespace MyRecipe_App
     {
         static void Main(string[] args) //MAIN Method
         {
+            Recipe recipe = new Recipe();
             while (true)//This keeps the menu running continuously without having to restart the program
             {
                 Console.ForegroundColor = ConsoleColor.Blue; //Font Color
@@ -25,6 +26,7 @@ namespace MyRecipe_App
 
                     case "1" or "one" or "ONE" or "One": //ONE
                         Console.Clear();
+                        recipe.CreateRecipe();
                         break;
                     default:
                         Console.Clear();
