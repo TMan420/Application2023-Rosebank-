@@ -108,6 +108,7 @@ namespace MyRecipe_App
                 }
                 Console.WriteLine();
                 Console.WriteLine();
+                Console.Clear();
             }
 
             // Asks the user to identify the amount of steps in the recipe
