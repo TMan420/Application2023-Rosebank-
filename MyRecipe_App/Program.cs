@@ -25,6 +25,7 @@ namespace MyRecipe_App
 
                     case "1" or "one" or "ONE" or "One": //ONE
                         Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         recipe.CreateRecipe();
                         break;
                     default:
