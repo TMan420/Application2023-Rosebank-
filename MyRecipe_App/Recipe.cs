@@ -61,8 +61,9 @@ namespace MyRecipe_App
 
            
                 Console.Clear();
-
-                Console.WriteLine("Food Group: ");
+                while (true)
+                {
+                    Console.WriteLine("Food Group: ");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("1: Starchy Foods");
@@ -75,40 +76,37 @@ namespace MyRecipe_App
                 Console.WriteLine();
                 string Input3 = Console.ReadLine();
                 Console.WriteLine();
-                switch (Input3) 
-                {
-                    case "1" or "one" or "ONE" or "One":
-                        Group[i] = "Starchy Foods";
-                        Console.WriteLine(Group[0]);
-                        break;
-                    case "2" or "two" or "TWO" or "Two":
-                        Group[i] = "Fruits & Vegetables";
-                        Console.WriteLine(Group[0]);
-                        break;
-                    case "3" or "three" or "THREE" or "Three":
-                        Group[i] = "Chicken, fish, meat & Eggs";
-                        Console.WriteLine(Group[0]);
-                        break;
-                    case "4" or "four" or "FOUR" or "Four":
-                        Group[i] = "Milk & Dairy Products";
-                        Console.WriteLine(Group[0]);
-                        break;
-                    case "5" or "five" or "FIVE" or "Five":
-                        Group[i] = "Fats & Oils";
-                        Console.WriteLine(Group[0]);
-                        break;
-                    case "6" or "six" or "SIX" or "Six":
-                        Group[i] = "Dry Beans";
-                        Console.WriteLine(Group[0]);
-                        break;
-                    case "7" or "seven" or "SEVEN" or "Seven":
-                        Group[i] = "Water";
-                        Console.WriteLine(Group[0]);
-                        break;
+                
+                    switch (Input3)
+                    {
+                        case "1" or "one" or "ONE" or "One":
+                            Group[i] = "Starchy Foods";
+                            break;
+                        case "2" or "two" or "TWO" or "Two":
+                            Group[i] = "Fruits & Vegetables";
+                            break;
+                        case "3" or "three" or "THREE" or "Three":
+                            Group[i] = "Chicken, fish, meat & Eggs";
+                            break;
+                        case "4" or "four" or "FOUR" or "Four":
+                            Group[i] = "Milk & Dairy Products";
+                            break;
+                        case "5" or "five" or "FIVE" or "Five":
+                            Group[i] = "Fats & Oils";
+                            break;
+                        case "6" or "six" or "SIX" or "Six":
+                            Group[i] = "Dry Beans";
+                            break;
+                        case "7" or "seven" or "SEVEN" or "Seven":
+                            Group[i] = "Water";
+                            break;
+                        default:
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("Please choose a number from the list Below");
+                            break;
+                    }
                 }
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.Clear();
             }
 
             // Asks the user to identify the amount of steps in the recipe
