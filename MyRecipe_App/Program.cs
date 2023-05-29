@@ -17,7 +17,8 @@ namespace MyRecipe_App
                 Console.WriteLine("ENTER 3 - SCALE RECIPE");
                 Console.WriteLine("ENTER 4 - RESET QUANTITIES");
                 Console.WriteLine("ENTER 5 - CLEAR RECIPE ");
-                Console.WriteLine("ENTER 6 - EXIT");
+                Console.WriteLine("ENTER 6 - LIST");
+                Console.WriteLine("ENTER 7 - EXIT");
                 Console.WriteLine();
                 string MENU = Console.ReadLine(); //Calling the switch Function
                 switch (MENU) //This method handles Errors
@@ -25,7 +26,7 @@ namespace MyRecipe_App
 
                     case "1" or "one" or "ONE" or "One": //ONE
                         Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         recipe.CreateRecipe();
                         break;
                     case "2" or "two" or "TWO" or "Two":
@@ -33,10 +34,31 @@ namespace MyRecipe_App
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         recipe.Display();
                         break;
+                    case "3" or "three" or "THREE" or "Three":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write("Enter scaling factor (0.5, 2, or 3): ");
+                        double factor = double.Parse(Console.ReadLine());
+                        recipe.Scale(factor);
+                        break;
+                    case "4" or "four" or "FOUR" or "Four":
+                        Console.Clear();
+                        recipe.Reset();
+                        break;
+                    case "5" or "five" or "FIVE" or "Five":
+                        Console.Clear();
+                        recipe.Clear();
+                        break;
+                    case "6" or "six" or "SIX" or "Six":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        recipe.myList();
+                        break;
+
                     default:
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("                             <<TRY AGAIN>>");
+                        Console.WriteLine("                             <<PLEASE ENTER A NUMBER FROM THE LIST>>");
                         break;
                 }
             }

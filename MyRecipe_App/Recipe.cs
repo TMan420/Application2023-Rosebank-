@@ -45,14 +45,14 @@ namespace MyRecipe_App
                 Console.WriteLine($"Ingredient -> {i + 1}:");
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.Write("Name: ");
+                Console.Write("Name of Ingredient: ");
                 Console.WriteLine();
                 Ingredient[i] = Console.ReadLine();
                 Console.WriteLine();
                 Console.WriteLine("Total Calories: (Unit of Energy)");
                 Calories[i] = double.Parse(Console.ReadLine());
                 Console.WriteLine();
-                Console.Write("How many ");
+                Console.Write("How Much (Quantity)" );
                 Console.WriteLine();
                 Quantity[i] = double.Parse(Console.ReadLine());
                 Console.WriteLine();
@@ -80,24 +80,31 @@ namespace MyRecipe_App
                 {
                     case "1" or "one" or "ONE" or "One":
                         Group[i] = "Starchy Foods";
+                        Console.Clear();
                         break;
                     case "2" or "two" or "TWO" or "Two":
                         Group[i] = "Fruits & Vegetables";
+                        Console.Clear();
                         break;
                     case "3" or "three" or "THREE" or "Three":
                         Group[i] = "Chicken, fish, meat & Eggs";
+                        Console.Clear();
                         break;
                     case "4" or "four" or "FOUR" or "Four":
                         Group[i] = "Milk & Dairy Products";
+                        Console.Clear();
                         break;
                     case "5" or "five" or "FIVE" or "Five":
                         Group[i] = "Fats & Oils";
+                        Console.Clear();
                         break;
                     case "6" or "six" or "SIX" or "Six":
                         Group[i] = "Dry Beans";
+                        Console.Clear();
                         break;
                     case "7" or "seven" or "SEVEN" or "Seven":
                         Group[i] = "Water";
+                        Console.Clear();
                         break;
                     default:
                         Console.Clear();
@@ -105,6 +112,7 @@ namespace MyRecipe_App
                         Console.WriteLine("Please choose a number from the list Below");
                         break;
                 }
+
             }
 
             // Asks the user to identify the amount of steps in the recipe
@@ -126,27 +134,95 @@ namespace MyRecipe_App
         }
         public void Display() 
         {
+            Console.WriteLine("------------------------------------------------------------------------------------");
+            Console.WriteLine("");
             Console.WriteLine("Ingredients:");
             Console.WriteLine("");
             for (int i = 0; i < Ingredient.Length; i++)
             {
-                Console.WriteLine($"{Quantity[i]} {Unit[i]} of {Ingredient[i]}");
+                Console.WriteLine("");
+                Console.WriteLine(i + 1 + $") {Quantity[i]} {Unit[i]} of {Ingredient[i]}");
                 Console.WriteLine($"Calories = {Calories[i]}");
                 Console.WriteLine("");
             }
+            Console.WriteLine("------------------------------------------------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("Total Calories:");
+            Console.WriteLine("");
+            double sum = 0;
+            Array.ForEach(Calories, i => sum = sum + i);
+            Console.WriteLine(sum);
+            Console.WriteLine("");
 
             // Display the steps
+            Console.WriteLine("------------------------------------------------------------------------------------");
+            Console.WriteLine("");
             Console.WriteLine("Steps:");
             Console.WriteLine("");
             for (int x = 0; x < Steps.Length; x++)
             {
-                Console.WriteLine($"- {Steps[x]}");
+                Console.WriteLine(x + 1 +$") {Steps[x]}");
                 Console.WriteLine("");
-                Console.WriteLine("Press Enter");
-                Console.WriteLine("");
-                Console.ReadLine();
-                Console.Clear() ;
             }
+            Console.WriteLine("------------------------------------------------------------------------------------");
+            Console.WriteLine("");
+            Console.WriteLine("Please Press Enter: ");
+            Console.ReadLine();
+            Console.WriteLine("------------------------------------------------------------------------------------");
+            Console.Clear();
+        }
+        public void Scale(double factor)
+        {
+            // Multiply all the quantities by the scaling factor
+            for (int i = 0; i < Quantity.Length; i++)
+            {
+                Quantity[i] *= factor;
+            }
+            Console.Clear();
+        }
+        public void Reset()
+        {
+            // Reset all the quantities back into their original values
+            for (int h = 0; h < Quantity.Length; h++)
+            {
+                Quantity[h] /= 2;
+            }
+            Console.Clear();
+        }
+        public void Clear()
+        {
+            // Reset all the arrays to make them empty
+            Ingredient = new string[0];
+            Quantity = new double[0];
+            Unit = new string[0];
+            Steps = new string[0];
+            Console.Clear();
+        }
+        public void myList() 
+        {
+                Console.Clear();
+                Console.WriteLine("List of Ingredients");
+                List<string> MyIngredients = new List<string>();
+                MyIngredients.AddRange(Ingredient);
+                foreach (string ing in MyIngredients)
+                    Console.WriteLine(ing);
+                Console.WriteLine();
+
+                Console.WriteLine("List of Calories");
+                List<double> CaloryList = new List<double>();
+                CaloryList.AddRange(Calories);
+                foreach (double cals in CaloryList)
+                    Console.WriteLine(cals);
+                Console.WriteLine();
+
+                Console.WriteLine("List of Food Groups");
+                List<string> MyFoodGroups = new List<string>();
+                MyFoodGroups.AddRange(Group);
+                foreach (string MFG in Group)
+                    Console.WriteLine(MFG);
+                Console.WriteLine();
+            Console.ReadLine();
+            Console.Clear();
         }
     }
 }
