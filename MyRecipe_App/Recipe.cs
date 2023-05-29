@@ -17,7 +17,6 @@ namespace MyRecipe_App
         private string[] Name;
         private double[] Quantity;
         private double[] Calories;
-        List<string> Names = new List<string>();
         public Recipe()
         {
             string[] Ingredient = new string[0];
@@ -44,12 +43,21 @@ namespace MyRecipe_App
             Unit = new string[Input1];
             Calories = new double[Input1];
             Group = new string[Input1];
+            Name = new string[Input1];
+
+            Console.WriteLine("What is the Name of your Recipe");
+            Console.WriteLine("");
+            for (int i = 0; i < 1; i++)
+            {
+                Name[i] = Console.ReadLine();
+            }
+            Console.Clear();
 
             //The loop ammount is set by the user above
             for (int i = 0; i < Input1; i++)
             {
                 // Asks the user to enter the details of each ingredient
-                Console.WriteLine($"Ingredient -> {i + 1}:");
+                Console.WriteLine($"{Name[i]} Ingredient -> {i + 1}:");
                 Console.WriteLine();
                 Console.WriteLine();
                 //Name
@@ -147,14 +155,6 @@ namespace MyRecipe_App
                 Steps[i] = Console.ReadLine();
             }
             Console.Clear();
-            Console.WriteLine("What is the Name of your Recipe");
-            Console.WriteLine("");
-            Name[0] = Console.ReadLine();
-            Names.AddRange(Name);
-            Console.WriteLine();
-            Console.WriteLine("Please Press Enter");
-            Console.ReadLine();
-            Console.Clear();
         }
         public void Display() 
         {
@@ -227,6 +227,9 @@ namespace MyRecipe_App
         {
                 Console.Clear();
             Console.WriteLine("Recipe Names");
+            List<string> Names = new();
+            Names.AddRange(Name);
+            Names.Sort();
             foreach (String NAME in Name)
                 Console.WriteLine(NAME);
             Console.WriteLine();
