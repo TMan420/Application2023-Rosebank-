@@ -52,7 +52,7 @@ namespace MyRecipe_App
                     case "6" or "six" or "SIX" or "Six":
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Green;
-                        recipe.myList();
+                        recipe.MyList();
                         break;
 
                     default:

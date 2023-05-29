@@ -14,16 +14,20 @@ namespace MyRecipe_App
         private string[] Unit;
         private string[] Steps;
         private string[] Group;
+        private string[] Name;
         private double[] Quantity;
         private double[] Calories;
+        List<string> Names = new List<string>();
         public Recipe()
         {
             string[] Ingredient = new string[0];
             string[] Unit = new string[0];
             string[] Steps = new string[0];
             string[] Group = new string[0];
+            string[] Name = new string[0];
             double[] Quantity = new double[0];
             double[] Calories = new double[0];
+
 
         }
         public void CreateRecipe()
@@ -60,10 +64,11 @@ namespace MyRecipe_App
                 {
                     var Notification = $"({Ingredient[i]} contains more that 300 Calories)";
                     Console.WriteLine(Notification);
+                    Console.WriteLine("");
                 }
                 Console.WriteLine();
                 //Quantity
-                Console.Write("How Much (Quantity)" );
+                Console.Write($"How Much {Ingredient[i]} would you like (QUANTITY)" );
                 Console.WriteLine();
                 Quantity[i] = double.Parse(Console.ReadLine());
                 Console.WriteLine();
@@ -73,7 +78,7 @@ namespace MyRecipe_App
                 Unit[i] = Console.ReadLine();
                 Console.Clear();
                 //Food Group
-                Console.WriteLine("Food Group: ");
+                Console.WriteLine($"{Ingredient[i]} Food Group: ");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("1: Starchy Foods");
@@ -138,10 +143,18 @@ namespace MyRecipe_App
             for (int i = 0; i < Input2; i++)
             {
                 Console.Write($"Enter step #{i + 1}: ");
+                Console.WriteLine("");
                 Steps[i] = Console.ReadLine();
             }
             Console.Clear();
-
+            Console.WriteLine("What is the Name of your Recipe");
+            Console.WriteLine("");
+            Name[0] = Console.ReadLine();
+            Names.AddRange(Name);
+            Console.WriteLine();
+            Console.WriteLine("Please Press Enter");
+            Console.ReadLine();
+            Console.Clear();
         }
         public void Display() 
         {
@@ -155,6 +168,7 @@ namespace MyRecipe_App
                 Console.WriteLine(i + 1 + $") {Quantity[i]} {Unit[i]} of {Ingredient[i]}");
                 Console.WriteLine($"Calories = {Calories[i]}");
                 Console.WriteLine("");
+                
             }
             Console.WriteLine("------------------------------------------------------------------------------------");
             Console.WriteLine("");
@@ -194,9 +208,9 @@ namespace MyRecipe_App
         public void Reset()
         {
             // Reset all the quantities back into their original values
-            for (int h = 0; h < Quantity.Length; h++)
+            for (int i = 0; i < Quantity.Length; i++)
             {
-                Quantity[h] /= 2;
+                Quantity[i] /= 2;
             }
             Console.Clear();
         }
@@ -209,21 +223,25 @@ namespace MyRecipe_App
             Steps = new string[0];
             Console.Clear();
         }
-        public void myList() 
+        public void MyList() 
         {
                 Console.Clear();
-                Console.WriteLine("List of Ingredients");
-                List<string> MyIngredients = new List<string>();
-            MyIngredients.AddRange(Ingredient);
-            MyIngredients.Sort();
-            foreach (string ing in MyIngredients)
+            Console.WriteLine("Recipe Names");
+            foreach (String NAME in Name)
+                Console.WriteLine(NAME);
+            Console.WriteLine();
+
+            Console.WriteLine("List of Ingredients");
+                List<string> MyIngredients = new();
+                MyIngredients.AddRange(Ingredient);
+                MyIngredients.Sort();
+                foreach (string ing in MyIngredients)
                     Console.WriteLine(ing);
                 Console.WriteLine();
 
                 Console.WriteLine("List of Calories");
                 List<double> CaloryList = new List<double>();
             CaloryList.AddRange(Calories);
-            MyIngredients.Sort();
             foreach (double cals in CaloryList)
                     Console.WriteLine(cals);
                 Console.WriteLine();
@@ -231,10 +249,10 @@ namespace MyRecipe_App
                 Console.WriteLine("List of Food Groups");
                 List<string> MyFoodGroups = new List<string>();
             MyFoodGroups.AddRange(Group);
-            MyIngredients.Sort();
             foreach (string MFG in Group)
                     Console.WriteLine(MFG);
                 Console.WriteLine();
+            Console.WriteLine("Please Press Enter");
             Console.ReadLine();
             Console.Clear();
         }
