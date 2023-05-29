@@ -28,10 +28,15 @@ namespace MyRecipe_App
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         recipe.CreateRecipe();
                         break;
+                    case "2" or "two" or "TWO" or "Two":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        recipe.Display();
+                        break;
                     default:
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("                                                              <<TRY AGAIN>>");
+                        Console.WriteLine("                             <<TRY AGAIN>>");
                         break;
                 }
             }
