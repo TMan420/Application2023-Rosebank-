@@ -54,11 +54,11 @@ namespace MyRecipe_App
                 Ingredient[i] = Console.ReadLine();
                 Console.WriteLine();
                 //Calory
-                Console.WriteLine("Total Calories: (Unit of Energy)");
+                Console.WriteLine($"Total Calories in {Ingredient[i]}: (Unit of Energy)");
                 var x = Calories[i] = double.Parse(Console.ReadLine());
                 if (x>300) 
                 {
-                    var Notification = ($"({Ingredient[i]} contains more that 300 Calories)");
+                    var Notification = $"({Ingredient[i]} contains more that 300 Calories)";
                     Console.WriteLine(Notification);
                 }
                 Console.WriteLine();
