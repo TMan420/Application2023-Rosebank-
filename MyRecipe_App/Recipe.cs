@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -23,9 +24,11 @@ namespace MyRecipe_App
             string[] Group = new string[0];
             double[] Quantity = new double[0];
             double[] Calories = new double[0];
+
         }
         public void CreateRecipe()
         {
+
             // Asks the user to enter the amount of ingredients required for the recipe and then Initialising the array with a size which is set according to the user Input
             Console.Write("Enter the total number of Ingredients: ");
             Console.WriteLine();
@@ -45,17 +48,26 @@ namespace MyRecipe_App
                 Console.WriteLine($"Ingredient -> {i + 1}:");
                 Console.WriteLine();
                 Console.WriteLine();
+                //Name
                 Console.Write("Name of Ingredient: ");
                 Console.WriteLine();
                 Ingredient[i] = Console.ReadLine();
                 Console.WriteLine();
+                //Calory
                 Console.WriteLine("Total Calories: (Unit of Energy)");
-                Calories[i] = double.Parse(Console.ReadLine());
+                var x = Calories[i] = double.Parse(Console.ReadLine());
+                if (x>300) 
+                {
+                    var Notification = ($"({Ingredient[i]} contains more that 300 Calories)");
+                    Console.WriteLine(Notification);
+                }
                 Console.WriteLine();
+                //Quantity
                 Console.Write("How Much (Quantity)" );
                 Console.WriteLine();
                 Quantity[i] = double.Parse(Console.ReadLine());
                 Console.WriteLine();
+                //Unit
                 Console.Write("Unit of measurement: ( KG, G, TBBS,TSP, L, ML)");
                 Console.WriteLine();
                 Unit[i] = Console.ReadLine();
@@ -112,7 +124,6 @@ namespace MyRecipe_App
                         Console.WriteLine("Please choose a number from the list Below");
                         break;
                 }
-
             }
 
             // Asks the user to identify the amount of steps in the recipe
@@ -150,7 +161,7 @@ namespace MyRecipe_App
             Console.WriteLine("Total Calories:");
             Console.WriteLine("");
             double sum = 0;
-            Array.ForEach(Calories, i => sum = sum + i);
+            Array.ForEach(Calories, i => sum += i);
             Console.WriteLine(sum);
             Console.WriteLine("");
 
@@ -203,22 +214,25 @@ namespace MyRecipe_App
                 Console.Clear();
                 Console.WriteLine("List of Ingredients");
                 List<string> MyIngredients = new List<string>();
-                MyIngredients.AddRange(Ingredient);
-                foreach (string ing in MyIngredients)
+            MyIngredients.AddRange(Ingredient);
+            MyIngredients.Sort();
+            foreach (string ing in MyIngredients)
                     Console.WriteLine(ing);
                 Console.WriteLine();
 
                 Console.WriteLine("List of Calories");
                 List<double> CaloryList = new List<double>();
-                CaloryList.AddRange(Calories);
-                foreach (double cals in CaloryList)
+            CaloryList.AddRange(Calories);
+            MyIngredients.Sort();
+            foreach (double cals in CaloryList)
                     Console.WriteLine(cals);
                 Console.WriteLine();
 
                 Console.WriteLine("List of Food Groups");
                 List<string> MyFoodGroups = new List<string>();
-                MyFoodGroups.AddRange(Group);
-                foreach (string MFG in Group)
+            MyFoodGroups.AddRange(Group);
+            MyIngredients.Sort();
+            foreach (string MFG in Group)
                     Console.WriteLine(MFG);
                 Console.WriteLine();
             Console.ReadLine();
